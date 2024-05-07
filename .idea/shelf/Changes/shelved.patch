@@ -1,0 +1,257 @@
+Index: src/main/java/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/App.java b/src/main/java/App.java
+new file mode 100644
+--- /dev/null	(date 1715065794518)
++++ b/src/main/java/App.java	(date 1715065794518)
+@@ -0,0 +1,13 @@
++public class App {
++
++    public App() {
++    }
++
++    public static void main(String[] args) {
++        GradeConverter converter = new GradeConverter();
++
++        for (int i = 0; i <= 105; ++i) {
++            System.out.println("" + i + ";" + converter.convertGrade(i));
++        }
++    }
++}
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1713859331008)
++++ b/.idea/encodings.xml	(date 1713859331008)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1713859326077)
++++ b/.idea/misc.xml	(date 1713859326077)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/test/java/GradeConverTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GradeConverTest.java b/src/test/java/GradeConverTest.java
+new file mode 100644
+--- /dev/null	(date 1715065742828)
++++ b/src/test/java/GradeConverTest.java	(date 1715065742828)
+@@ -0,0 +1,30 @@
++import org.junit.Assert;
++import org.junit.Before;
++import org.junit.Test;
++
++public class GradeConverTest {
++
++    private GradeConverter converter;
++
++    public GradeConverTest() {
++    }
++
++    @Before
++    public void setUp() throws Exception {
++        this.converter = new GradeConverter();
++    }
++
++    @Test
++    public void testConvert1() {
++        String expected = "A";
++        String actual = this.converter.convertGrade(100);
++        Assert.assertEquals(expected, actual);
++    }
++
++    @Test
++    public void testConvert2() {
++        String expected = "A";
++        String actual = this.converter.convertGrade(90);
++        Assert.assertEquals(expected, actual);
++    }
++}
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(date 1713860018291)
++++ b/pom.xml	(date 1713860018291)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>mvn-prj</artifactId>
++    <version>1.0-SNAPSHOT</version>
++
++    <properties>
++        <maven.compiler.source>17</maven.compiler.source>
++        <maven.compiler.target>17</maven.compiler.target>
++        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++
++    </properties>
++    <dependencies>
++    <!-- https://mvnrepository.com/artifact/junit/junit -->
++    <dependency>
++        <groupId>junit</groupId>
++        <artifactId>junit</artifactId>
++        <version>4.13.2</version>
++        <scope>test</scope>
++    </dependency>
++    </dependencies>
++
++</project>
+\ No newline at end of file
+Index: src/main/java/GradeConverter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/GradeConverter.java b/src/main/java/GradeConverter.java
+new file mode 100644
+--- /dev/null	(date 1715066858897)
++++ b/src/main/java/GradeConverter.java	(date 1715066858897)
+@@ -0,0 +1,19 @@
++public class GradeConverter {
++
++    public GradeConverter() {
++    }
++
++    public String convertGrade(int score) {
++        if (score <= 100 && score >= 90) {
++            return "A";
++        } else if (score <= 89 && score >= 80) {
++            return "B";
++        } else if (score <= 79 && score >= 70) {
++            return "C";
++        } else if (score <= 69 && score >= 60) {
++            return "D";
++        } else {
++            return score <= 59 && score >= 50 ? "E" : "Invalid";
++        }
++    }
++}
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+--- /dev/null	(date 1713859323691)
++++ b/.gitignore	(date 1713859323691)
+@@ -0,0 +1,38 @@
++target/
++!.mvn/wrapper/maven-wrapper.jar
++!**/src/main/**/target/
++!**/src/test/**/target/
++
++### IntelliJ IDEA ###
++.idea/modules.xml
++.idea/jarRepositories.xml
++.idea/compiler.xml
++.idea/libraries/
++*.iws
++*.iml
++*.ipr
++
++### Eclipse ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
++
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++build/
++!**/src/main/**/build/
++!**/src/test/**/build/
++
++### VS Code ###
++.vscode/
++
++### Mac OS ###
++.DS_Store
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1715068020677)
++++ b/.idea/vcs.xml	(date 1715068020677)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1713859330836)
++++ b/.idea/.gitignore	(date 1713859330836)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Editor-based HTTP Client requests
++/httpRequests/
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
